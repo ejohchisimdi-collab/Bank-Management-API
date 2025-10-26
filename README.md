@@ -136,10 +136,10 @@ Admin Endpoints
 | POST | /user/user | { "name": "John Doe", "contactInfo": "email or phone" } | Create a new user |
 | DELETE | /user/user/{userId} | None | Delete a user and their accounts |
 | POST | /user/savings-account/{userID} | { "accountNumber": "12345", "balance": 1000.0 } | Create a new savings account for a user |
-| GET | /user/savings-account/{bankId}} | None | Get all savings accounts for a user |
+| GET | /user/savings-account/{userId}} | None | Get all savings accounts for a user |
 | DELETE | /user/savings-account/{bankId}} | None | Delete a savings account by ID |
 | POST | /user/checking-account/{userID}} | { "accountNumber": "54321", "balance": 500.0 } | Create a new checking account for a user |
-| GET | /user/checking-account/{bankId}} | None | Get all checking accounts for a user |
+| GET | /user/checking-account/{userId}} | None | Get all checking accounts for a user |
 | DELETE | /user/checking-account/{bankId}} | None | Delete a checking account by ID |
 | POST | /user/checking-account/deposit/{bankId}} | { "amount": 200.0 } | Deposit into a checking account |
 | GET | /user/checking-account/deposit/{bankId}} | None | Get deposit history for a checking account |
