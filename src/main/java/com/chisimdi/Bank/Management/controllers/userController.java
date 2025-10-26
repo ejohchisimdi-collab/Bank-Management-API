@@ -27,9 +27,9 @@ public class userController {
     public String createSavingsAccount(@PathVariable("userId")int userID, @RequestBody savingsAccount savingsAccount){
         return userService.createNewSavingsAccount(savingsAccount, userID);
     }
-    @GetMapping("/user/savings-account/{bankId}")
-    public List<savingsAccount>viewAllSavingsAccount(@PathVariable("bankId")int bankId){
-        return userService.viewAllSavingsAccount(bankId);
+    @GetMapping("/user/savings-account/{userId}")
+    public List<savingsAccount>viewAllSavingsAccount(@PathVariable("userId")int userId){
+        return userService.viewAllSavingsAccount(userId);
     }
     @DeleteMapping("/user/savings-account/{bankId}")
     public String deleteSavingsAccount(@PathVariable("bankId")int bankId){
@@ -39,9 +39,9 @@ public class userController {
     public String createCheckingAccount(@PathVariable("userId")int userId, @RequestBody checkingsAccount checkingsAccount){
         return userService.createNewCheckingsAccount(checkingsAccount, userId);
     }
-    @GetMapping("/user/checking-account/{bankId}")
-    public List<checkingsAccount>checkingsAccounts(@PathVariable("bankId")int bankId){
-        return userService.viewAllCheckingsAccount(bankId);
+    @GetMapping("/user/checking-account/{userId}")
+    public List<checkingsAccount>checkingsAccounts(@PathVariable("userId")int userId){
+        return userService.viewAllCheckingsAccount(userId);
     }
     @DeleteMapping("/user/checking-account/{bankId}")
     public String deleteCheckingsAccount(@PathVariable("bankId")int bankId){
@@ -83,9 +83,5 @@ public class userController {
     public List<withdrawalHistory> getwithdrawForS(@PathVariable("bankId")int bankId){
         return userService.viewWithdrawalHistorySavingsAccount(bankId);
     }
-
-
-
-
 
 }
