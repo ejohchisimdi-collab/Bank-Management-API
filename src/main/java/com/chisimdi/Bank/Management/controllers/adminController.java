@@ -1,7 +1,5 @@
 package com.chisimdi.Bank.Management.controllers;
-import com.chisimdi.Bank.Management.dto.*;
 import com.chisimdi.Bank.Management.models.*;
-import com.chisimdi.Bank.Management.repsitories.*;
 import com.chisimdi.Bank.Management.services.*;
 
 
@@ -37,17 +35,17 @@ public class adminController {
     public List<checkingsAccount> findAllck(){
         return adminService.findAllCheckingsAccount();
     }
-    @GetMapping("/admin/checking-account/{userId}")
-    public checkingsAccount findbyid(@PathVariable("userId")int userId){
-        return adminService.findCheckingsAccountById(userId);
+    @GetMapping("/admin/checking-account/{bankId}")
+    public checkingsAccount findbyid(@PathVariable("bankId")int bankId){
+        return adminService.findCheckingsAccountById(bankId);
     }
     @GetMapping("/admin/saving-account/")
     public List<savingsAccount>savingsAccounts(){
         return adminService.findAllSavingsAccount();
     }
-    @GetMapping("/admin/saving-account/{userId}")
-    public savingsAccount findbyId(@PathVariable("userId")int userId){
-        return adminService.findSavingAccountbyId(userId);
+    @GetMapping("/admin/saving-account/{bankId}")
+    public savingsAccount findbyId(@PathVariable("bankId")int bankId){
+        return adminService.findSavingAccountbyId(bankId);
     }
 @GetMapping("/admin/deposit")
     public List<depositHistory>allDeposites(){
@@ -58,9 +56,9 @@ public class adminController {
         return adminService.viewAllWithdraws();
 }
 
-@PostMapping("/admin/interest/{userId}")
-    public String addIntereses(@PathVariable ("userId")int userId){
-        return adminService.calculateInterest(userId);
+@PostMapping("/admin/interest/{bankId}")
+    public String addIntereses(@PathVariable ("bankId")int bankId){
+        return adminService.calculateInterest(bankId);
 }
 
 }
