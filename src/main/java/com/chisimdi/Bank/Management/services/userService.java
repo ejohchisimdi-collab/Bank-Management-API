@@ -83,6 +83,7 @@ public class userService {
         }
         else{
             withdrawalHistory wh=new withdrawalHistory(amount);
+            sv.setBalance(sv.getBalance()-amount);
             wh.setSavingsAccount(sv);
             withdrawalHistoryRepository.save(wh);
             sv.getWithdrawalHistories().add(wh);
