@@ -4,10 +4,6 @@ import com.chisimdi.Bank.Management.models.*;
 import org.springframework.web.bind.annotation.*;
 import com.chisimdi.Bank.Management.dto.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -23,69 +19,69 @@ public class userController {
     public String createUser(@RequestBody user user){
         return userService.createUser(user);
     }
-    @DeleteMapping("/user/user/{userId}")
-    public String deleteUser(@PathVariable("userId")int userId){
-        return userService.deleteUser(userId);
+    @DeleteMapping("/user/user/{userID}")
+    public String deleteUser(@PathVariable("userID")int userID){
+        return userService.deleteUser(userID);
     }
     @PostMapping("/user/savings-account/{userId}")
-    public String createSavingsAccount(@PathVariable("userId")int userId, @RequestBody savingsAccount savingsAccount){
-        return userService.createNewSavingsAccount(savingsAccount,userId);
+    public String createSavingsAccount(@PathVariable("userId")int userID, @RequestBody savingsAccount savingsAccount){
+        return userService.createNewSavingsAccount(savingsAccount, userID);
     }
-    @GetMapping("/user/savings-account/{userId}")
-    public List<savingsAccount>viewAllSavingsAccount(@PathVariable("userId")int userId){
-        return userService.viewAllSavingsAccount(userId);
+    @GetMapping("/user/savings-account/{bankId}")
+    public List<savingsAccount>viewAllSavingsAccount(@PathVariable("bankId")int bankId){
+        return userService.viewAllSavingsAccount(bankId);
     }
-    @DeleteMapping("/user/savings-account/{userId}")
-    public String deleteSavingsAccount(@PathVariable("userId")int userId){
-        return userService.deleteSavingsAccount(userId);
+    @DeleteMapping("/user/savings-account/{bankId}")
+    public String deleteSavingsAccount(@PathVariable("bankId")int bankId){
+        return userService.deleteSavingsAccount(bankId);
     }
-    @PostMapping("/user/checking-account/{userId}")
-    public String createCheckingAccount(@PathVariable("userId")int userId,@RequestBody checkingsAccount checkingsAccount){
-        return userService.createNewCheckingsAccount(checkingsAccount,userId);
+    @PostMapping("/user/checking-account/{userID}")
+    public String createCheckingAccount(@PathVariable("userId")int userId, @RequestBody checkingsAccount checkingsAccount){
+        return userService.createNewCheckingsAccount(checkingsAccount, userId);
     }
-    @GetMapping("/user/checking-account/{userId}")
-    public List<checkingsAccount>checkingsAccounts(@PathVariable("userId")int userId){
-        return userService.viewAllCheckingsAccount(userId);
+    @GetMapping("/user/checking-account/{bankId}")
+    public List<checkingsAccount>checkingsAccounts(@PathVariable("bankId")int bankId){
+        return userService.viewAllCheckingsAccount(bankId);
     }
-    @DeleteMapping("/user/checking-account/{userId}")
-    public String deleteCheckingsAccount(@PathVariable("userId")int userId){
-        return userService.deleteCheckingsAccount(userId);
-    }
-
-    @PostMapping("/user/checking-account/deposit/{userId}")
-    public String makedepositForC(@PathVariable("userId")int userId,@RequestBody userDTo dto){
-        return userService.depositetoCheckingsAccount(userId, dto.getAmount());
-    }
-    @GetMapping ("/user/checking-account/deposit/{userId}")
-    public List<depositHistory> getdepositForC(@PathVariable("userId")int userId){
-        return userService.viewDepositHistoryCheckingsAccount(userId);
+    @DeleteMapping("/user/checking-account/{bankId}")
+    public String deleteCheckingsAccount(@PathVariable("bankId")int bankId){
+        return userService.deleteCheckingsAccount(bankId);
     }
 
-    @PostMapping("/user/checking-account/withdrawal/{userId}")
-    public String makewithdrawForC(@PathVariable("userId")int userId,@RequestBody userDTo dto){
-        return userService.withdrawFromCheckingsAccount(userId, dto.getAmount());
+    @PostMapping("/user/checking-account/deposit/{bankId}")
+    public String makedepositForC(@PathVariable("bankId")int bankId,@RequestBody userDTo dto){
+        return userService.depositetoCheckingsAccount(bankId, dto.getAmount());
     }
-    @GetMapping("/user/checking-account/withdrawal/{userId}")
-    public List<withdrawalHistory> getwithdrawForC(@PathVariable("userId")int userId){
-        return userService.viewWithdrawalHistoryCheckingAccount(userId);
-    }
-
-    @PostMapping("/user/savings-account/deposit/{userId}")
-    public String makedepositForS(@PathVariable("userId")int userId,@RequestBody userDTo dto){
-        return userService.depositetoSavingsAccount(userId, dto.getAmount());
-    }
-    @GetMapping ("/user/savings-account/deposit/{userId}")
-    public List<depositHistory> getdepositForS(@PathVariable("userId")int userId){
-        return userService.viewDepositHistorySavingsAccount(userId);
+    @GetMapping ("/user/checking-account/deposit/{bankId}")
+    public List<depositHistory> getdepositForC(@PathVariable("bankId")int bankId){
+        return userService.viewDepositHistoryCheckingsAccount(bankId);
     }
 
-    @PostMapping("/user/savings-account/withdrawal/{userId}")
-    public String makewithdrawFors(@PathVariable("userId")int userId,@RequestBody userDTo dto){
-        return userService.withdrawFromSavingsAccount(userId, dto.getAmount());
+    @PostMapping("/user/checking-account/withdrawal/{bankId}")
+    public String makewithdrawForC(@PathVariable("bankId")int bankId,@RequestBody userDTo dto){
+        return userService.withdrawFromCheckingsAccount(bankId, dto.getAmount());
     }
-    @GetMapping("/user/savings-account/withdrawal/{userId}")
-    public List<withdrawalHistory> getwithdrawForS(@PathVariable("userId")int userId){
-        return userService.viewWithdrawalHistorySavingsAccount(userId);
+    @GetMapping("/user/checking-account/withdrawal/{bankId}")
+    public List<withdrawalHistory> getwithdrawForC(@PathVariable("bankId")int bankId){
+        return userService.viewWithdrawalHistoryCheckingAccount(bankId);
+    }
+
+    @PostMapping("/user/savings-account/deposit/{bankId}")
+    public String makedepositForS(@PathVariable("bankId")int bankId,@RequestBody userDTo dto){
+        return userService.depositetoSavingsAccount(bankId, dto.getAmount());
+    }
+    @GetMapping ("/user/savings-account/deposit/{bankId}")
+    public List<depositHistory> getdepositForS(@PathVariable("bankId")int bankId){
+        return userService.viewDepositHistorySavingsAccount(bankId);
+    }
+
+    @PostMapping("/user/savings-account/withdrawal/{bankId}")
+    public String makewithdrawFors(@PathVariable("bankId")int bankId,@RequestBody userDTo dto){
+        return userService.withdrawFromSavingsAccount(bankId, dto.getAmount());
+    }
+    @GetMapping("/user/savings-account/withdrawal/{bankId}")
+    public List<withdrawalHistory> getwithdrawForS(@PathVariable("bankId")int bankId){
+        return userService.viewWithdrawalHistorySavingsAccount(bankId);
     }
 
 
